@@ -31,6 +31,23 @@ func Gin() {
 		c.String(http.StatusOK, "The available groups are [...]")
 	})
 
+	r.GET("/welcome", func(c *gin.Context) {
+		firstname := c.DefaultQuery("firstname", "Guest")
+		lastname := c.Query("lastname")
+		c.String(200, "Hello %s %s", firstname, lastname)
+	})
+
+	r.POST("/form_post", func(c *gin.Context) {
+		message := c.PostForm("message")
+		nick := c.DefaultPostForm("nick", "anonymous")
+
+		c.JSON(http.StatusOK, gin.H{
+			"status":  "posted",
+			"message": message,
+			"nick":    nick,
+		})
+	})
+
 	err := r.Run()
 	if err != nil {
 		return
