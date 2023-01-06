@@ -8,7 +8,8 @@ import (
 
 func main() {
 	//learn.Cnm()
-	webproject.Gin()
+	//webproject.Gin()
+	webproject.HttpServer()
 	// git_add.Src()
 	//print(len("abcdefghijk"))
 	//learn.Recursion()

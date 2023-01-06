@@ -48,6 +48,14 @@ func Gin() {
 		})
 	})
 
+	r.GET("/someJson", func(c *gin.Context) {
+		data := map[string]interface{}{
+			"lang": "Go language",
+			"tag":  "<br>",
+		}
+		c.AsciiJSON(200, data)
+	})
+
 	err := r.Run()
 	if err != nil {
 		return
